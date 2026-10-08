@@ -15,6 +15,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   var w = window, d = document, n = navigator, ID = MR_GA_ID, BASIC = MR_CONSENT_MODE !== 'advanced';
   w.mrTrack = function () {};
   if (!/^G-[A-Z0-9]{4,}$/.test(ID) || /^G-X+$/.test(ID) || w.__mrAnalytics) return;
+  if (location.hostname !== 'kickllm.com') return; // local dev and QA copies must not report to the production property
   w.__mrAnalytics = 1;
 
   var KEY = 'mr_consent_v1', TTL = 34164000; // seconds, 13 months: cookie_expires and the re-ask window
@@ -353,6 +354,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   var products = {'margin.kickllm.com':'margin_studio'};
   var seen = Object.create(null);
   document.querySelectorAll('.margin-actions a.margin-buy[href^="https://margin.kickllm.com/"]').forEach(function (a) {
+    if (a.closest('nav, header')) return; // a nav link is on screen at every page load, so it is not an offer view
     var href = a.href || '', product = '';
     Object.keys(products).some(function (key) {
       if (href.indexOf(key) >= 0) { product = products[key]; return true; }

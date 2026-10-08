@@ -11,14 +11,17 @@ def offer(kind):
     if kind=='speed':
         title='Take the benchmark into your own workload.'
         copy='Review measured cost, acceptance and latency from your own trials. Use Margin Studio to compare the evidence, model contribution margins and export an explainable report.'
+        fit='Picking a model on speed is half the decision. If you already have a usage export, Margin Studio turns it into cost per project and the margin left at your price, locally in your browser, with no API keys.'
     else:
         title='Know your AI costs. Now plan your margin.'
         copy='Turn your usage CSV into a cost breakdown, test revenue and growth assumptions, and export a report for your next pricing decision. Margin Studio runs locally with rates you supply.'
+        fit=''
+    fit_html=f'\n    <p class="margin-copy margin-fit">{fit}</p>' if fit else ''
     url=BASE+'?utm_source=kickllm&amp;utm_medium=contextual&amp;utm_campaign=margin_studio&amp;utm_content='+kind
     return f'''<!-- margin-studio-offer:start -->
 <section class="margin-studio-cta" aria-label="KickLLM Margin Studio">
   <div><p class="margin-eyebrow">KickLLM Margin Studio · Offline analysis app</p>
-    <h2>{title}</h2><p class="margin-copy">{copy}</p></div>
+    <h2>{title}</h2><p class="margin-copy">{copy}</p>{fit_html}</div>
   <div class="margin-actions"><a class="margin-buy" href="{url}#buy">Get Margin Studio — $39</a>
     <a class="margin-preview" href="{url}#preview">Try the interactive preview →</a>
     <span class="margin-detail">One-time purchase · Downloadable ZIP</span></div>
