@@ -147,6 +147,7 @@ function renderResults(results) {
     html += '</tr>';
   }
   tbody.innerHTML = html;
+  if (window.sctShown) window.sctShown();
 }
 
 function renderChart(results) {
