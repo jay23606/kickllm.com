@@ -234,6 +234,7 @@ function footer() {
       </div>
     </div>
   </nav>
+<script src="/assets/js/kkm-ui.js" defer></script>
 </body>
 </html>`;
 }

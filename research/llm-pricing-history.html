@@ -317,5 +317,6 @@ function sortTable(n){const t=document.getElementById('main-table'),b=t.tBodies[
 function downloadData(format){const entries=document.querySelectorAll('#main-table tbody tr');const data=Array.from(entries).map(el=>{const cells=el.querySelectorAll('td');if(cells.length<2)return null;return{date:cells[0]?.textContent?.trim(),model:cells[1]?.textContent?.trim(),provider:cells[2]?.textContent?.trim(),input_price:cells[3]?.textContent?.trim(),output_price:cells[4]?.textContent?.trim(),event:cells[5]?.textContent?.trim(),drop:cells[6]?.textContent?.trim()};}).filter(d=>d&&d.model);let content,type,ext;if(format==='json'){content=JSON.stringify(data,null,2);type='application/json';ext='json';}else{content='date,model,provider,input_price_per_1m,output_price_per_1m,event,drop\n'+data.map(d=>`"${d.date}","${d.model}","${d.provider}","${d.input_price}","${d.output_price}","${d.event}","${d.drop}"`).join('\n');type='text/csv';ext='csv';}const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='llm-pricing-history.'+ext;a.click();}
 </script>
 <script src="/assets/js/share.js"></script>
+<script src="/assets/js/kkm-ui.js" defer></script>
 </body>
 </html>

@@ -286,5 +286,6 @@ function sortTable(n){const t=document.getElementById('main-table'),b=t.tBodies[
 function downloadData(format){const entries=document.querySelectorAll('#main-table tbody tr');const data=Array.from(entries).map(el=>{const cells=el.querySelectorAll('td');if(cells.length<2)return null;return{name:cells[0]?.textContent?.trim(),category:cells[1]?.textContent?.trim(),detail:cells[2]?.textContent?.trim()?.substring(0,200)};}).filter(d=>d&&d.name);let content,type,ext;if(format==='json'){content=JSON.stringify(data,null,2);type='application/json';ext='json';}else{content='name,category,detail\n'+data.map(d=>`"${(d.name||'').replace(/"/g,'""')}","${(d.category||'').replace(/"/g,'""')}","${(d.detail||'').replace(/"/g,'""')}"`).join('\n');type='text/csv';ext='csv';}const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=document.title.toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.'+ext;a.click();}
 </script>
 <script src="/assets/js/share.js"></script>
+<script src="/assets/js/kkm-ui.js" defer></script>
 </body>
 </html>

@@ -298,5 +298,6 @@ function sortTable(n){const t=document.getElementById('main-table'),b=t.tBodies[
 function downloadData(format){const entries=document.querySelectorAll('#main-table tbody tr');const data=Array.from(entries).map(el=>{const cells=el.querySelectorAll('td');if(cells.length<2)return null;return{model:cells[0]?.textContent?.trim(),provider:cells[1]?.textContent?.trim(),output_tps:cells[2]?.textContent?.trim(),ttft_ms:cells[3]?.textContent?.trim(),parameters:cells[4]?.textContent?.trim(),price:cells[5]?.textContent?.trim(),tier:cells[6]?.textContent?.trim()};}).filter(d=>d&&d.model);let content,type,ext;if(format==='json'){content=JSON.stringify(data,null,2);type='application/json';ext='json';}else{content='model,provider,output_tokens_per_sec,ttft_ms,parameters,input_price_per_1m,speed_tier\n'+data.map(d=>`"${d.model}","${d.provider}","${d.output_tps}","${d.ttft_ms}","${d.parameters}","${d.price}","${d.tier}"`).join('\n');type='text/csv';ext='csv';}const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='llm-speed-benchmark.'+ext;a.click();}
 </script>
 <script src="/assets/js/share.js"></script>
+<script src="/assets/js/kkm-ui.js" defer></script>
 </body>
 </html>
