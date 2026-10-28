@@ -31,7 +31,7 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "author": { "@type": "Person", "name": "Michael Lip", "url": "https://zovo.one" },
     "datePublished": "2026-04-05",
-    "dateModified": "2026-05-25",
+    "dateModified": "2026-10-28",
     "featureList": ["Monthly cost calculator", "Per-conversation cost breakdown", "Self-host break-even analysis", "Multi-provider comparison", "Real-time pricing data", "Code generation support"],
     "sameAs": "https://github.com/theluckystrike/kickllm.com"
   }
@@ -43,10 +43,10 @@
     "mainEntity": [
       { "@type": "Question", "name": "How much does it cost to run an LLM?", "acceptedAnswer": { "@type": "Answer", "text": "API costs range from $0.10/1M tokens (Gemini 2.5 Flash-Lite) to $25/1M (Claude Opus 4.7 output). Self-hosting costs $1,000-$10,000+/month depending on GPU and model size." } },
       { "@type": "Question", "name": "What is the cheapest LLM API?", "acceptedAnswer": { "@type": "Answer", "text": "Gemini 2.5 Flash-Lite ($0.10/$0.40 per 1M tokens) and Gemini 2.5 Flash ($0.30/$2.50) are the cheapest high-quality options in 2026. GPT-4o mini ($0.15/$0.60) is also very competitive — it powers BeLikeNative's real-time grammar correction at 125+ requests/day per user." } },
-      { "@type": "Question", "name": "GPT-4o vs Claude pricing comparison?", "acceptedAnswer": { "@type": "Answer", "text": "GPT-4o costs $2.50/$10.00 per 1M tokens vs Claude Sonnet 4.6 at $3/$15. GPT-4o is now cheaper on both input and output, but Claude Sonnet 4.6 offers stronger coding and instruction following." } },
-      { "@type": "Question", "name": "When should I self-host an LLM?", "acceptedAnswer": { "@type": "Answer", "text": "Self-hosting makes sense when monthly API spend exceeds $2,000-$5,000, or when you need data privacy and low latency at high volume." } },
-      { "@type": "Question", "name": "How many GPUs to run Llama 3 70B?", "acceptedAnswer": { "@type": "Answer", "text": "Llama 3 70B requires ~140GB GPU memory in FP16 (2x A100 80GB). With INT8 quantization, a single A100 80GB works." } },
-      { "@type": "Question", "name": "Is this calculator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, KickLLM is completely free with real pricing data from all major providers. No sign-up required." } }
+      { "@type": "Question", "name": "GPT-4 vs Claude pricing comparison?", "acceptedAnswer": { "@type": "Answer", "text": "GPT-4o costs $2.50/$10.00 per 1M tokens vs Claude Sonnet 4.6 at $3/$15. GPT-4o is now cheaper on both input and output, but Claude Sonnet 4.6 offers stronger coding and instruction following." } },
+      { "@type": "Question", "name": "When should I self-host an LLM instead of using an API?", "acceptedAnswer": { "@type": "Answer", "text": "Self-hosting makes sense when monthly API spend exceeds $2,000-$5,000, or when you need data privacy and low latency at high volume." } },
+      { "@type": "Question", "name": "How many GPUs do I need to run Llama 3 70B?", "acceptedAnswer": { "@type": "Answer", "text": "Llama 3 70B requires ~140GB GPU memory in FP16 (2x A100 80GB). With INT8 quantization, a single A100 80GB works." } },
+      { "@type": "Question", "name": "Is this LLM cost calculator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, KickLLM is completely free with real pricing data from all major providers. No sign-up required." } }
     ]
   }
   </script>
@@ -81,6 +81,7 @@
 
   <section class="hero">
     <h1>LLM <span>Cost</span> Calculator</h1>
+    <div class="quick-answer" style="max-width:800px;margin:1.5rem auto;padding:14px 18px;border-left:4px solid #22c55e;background:#0f172a;border-radius:8px;"><p style="margin:0 0 6px;color:#e5e7eb;">LLM API costs run from $0.10 per 1M tokens on Gemini 2.5 Flash-Lite to $25 per 1M output tokens on Claude Opus 4.7. Self-hosting on GPU instances costs about $1,000 to $10,000 or more per month, depending on model size and hardware.</p><p style="margin:0;font-size:13px;color:#94a3b8;">Updated 2026-10-28</p></div>
     <p>Compare API costs across providers with real May 2026 pricing. Calculate monthly spend or per-conversation cost instantly.</p>
   <a class="margin-hero-link" href="https://margin.kickllm.com/?utm_source=kickllm&amp;utm_medium=homepage&amp;utm_campaign=margin_studio#preview">Working with real usage? Try Margin Studio · $39 once →</a>
   </section>
