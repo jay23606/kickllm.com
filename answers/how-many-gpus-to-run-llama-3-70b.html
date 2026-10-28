@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How many GPUs to run Llama 3 70B? Memory and hardware guide</title>
+<meta name="description" content="Llama 3 70B needs about 140GB of GPU memory at FP16 precision, or 2x A100 80GB. At INT8 it needs 70GB and fits on one A100 80GB. INT4 needs about 35GB. GPU table and hardware guide.">
+<meta property="og:title" content="How many GPUs to run Llama 3 70B? Memory and hardware guide">
+<meta property="og:description" content="Llama 3 70B needs about 140GB of GPU memory at FP16 precision, or 2x A100 80GB. At INT8 it needs 70GB and fits on one A100 80GB. INT4 needs about 35GB.">
+<meta property="og:url" content="https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Zovo Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How many GPUs to run Llama 3 70B? Memory and hardware guide">
+<meta name="twitter:description" content="Llama 3 70B needs about 140GB of GPU memory at FP16 precision, or 2x A100 80GB. At INT8 it needs 70GB and fits on one A100 80GB. INT4 needs about 35GB.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html">
+<link rel="alternate" hreflang="en" href="https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html">
+<link rel="alternate" hreflang="x-default" href="https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/batch-page.css">
+<link rel="stylesheet" href="/assets/sprint-page.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html#article",
+      "headline": "How many GPUs to run Llama 3 70B? Memory and hardware guide",
+      "description": "Llama 3 70B needs about 140GB of GPU memory at FP16 precision, 2x A100 80GB. At INT8 it needs 70GB and fits on one A100 80GB. INT4 needs about 35GB.",
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "author": { "@id": "https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html#author" },
+      "mainEntityOfPage": "https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html#author",
+      "name": "Michael Lip",
+      "url": "https://zovo.one"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://kickllm.com/answers/how-many-gpus-to-run-llama-3-70b.html",
+      "isPartOf": { "@type": "WebSite", "name": "KickLLM", "url": "https://kickllm.com" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kickllm.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Answers", "item": "https://kickllm.com/answers/" },
+        { "@type": "ListItem", "position": 3, "name": "How many GPUs to run Llama 3 70B?" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo">kickllm</a>
+  <ul class="nav-links">
+    <li><a href="/">Calculator</a></li>
+    <li><a href="/answers/">Answers</a></li>
+    <li><a href="/research/">Research</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
+
+<main class="batch-doc sprint-doc">
+<div class="hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/answers/">Answers</a> <span>/</span> <span>How many GPUs to run Llama 3 70B?</span></nav>
+  <h1>How many GPUs to run Llama 3 70B?</h1>
+  <div class="quick-answer" style="max-width:800px;margin:1.5rem 0;padding:14px 18px;border-left:4px solid #22c55e;background:#0f172a;border-radius:8px;">
+    <p style="margin:0 0 6px;color:#e5e7eb;">Llama 3 70B needs about 140GB of GPU memory at FP16 precision. That means two 80GB GPUs, such as 2x A100 80GB or 2x H100 80GB. At INT8 precision it needs about 70GB and fits on one A100 80GB. At INT4 it needs about 35GB.</p>
+    <p style="margin:0;font-size:13px;color:#94a3b8;">Updated 2026-10-28</p>
+  </div>
+  <p class="byline">By <a href="/about.html">Michael Lip</a> &middot; Updated 2026-10-28</p>
+</div>
+
+<section id="memory" class="sec">
+<h2>GPU memory by precision</h2>
+<p>The memory a model needs is set by its parameter count and the number of bits used per parameter. Llama 3 70B has 70 billion parameters. The table applies that arithmetic to the three precisions used for inference.</p>
+<div class="scroll">
+<table class="results-table wide" data-cols="3"><thead><tr><th>Precision</th><th>Bytes per parameter</th><th>GPU memory for 70B</th></tr></thead><tbody>
+<tr><td>FP16 / BF16</td><td>2</td><td>about 140GB</td></tr>
+<tr><td>INT8</td><td>1</td><td>about 70GB</td></tr>
+<tr><td>INT4</td><td>0.5</td><td>about 35GB</td></tr>
+</tbody></table>
+</div>
+<p class="snap">These are weight-only figures. Add room for the KV cache, activations and framework overhead. The real footprint is higher than the table. Keep a safety margin when you size the hardware.</p>
+</section>
+
+<section id="gpus" class="sec">
+<h2>GPU choices for each precision</h2>
+<div class="scroll">
+<table class="results-table wide" data-cols="3"><thead><tr><th>Precision</th><th>GPU count</th><th>Example hardware</th></tr></thead><tbody>
+<tr><td>FP16</td><td>2 GPUs</td><td>2x A100 80GB or 2x H100 80GB</td></tr>
+<tr><td>INT8</td><td>1 GPU</td><td>1x A100 80GB or 1x H100 80GB</td></tr>
+<tr><td>INT4</td><td>1 GPU</td><td>1x A100 80GB, or 2x 48GB cards for more headroom</td></tr>
+</tbody></table>
+</div>
+<p>Two smaller cards can replace one large card when the total memory is enough. Four 48GB cards give 192GB, which covers FP16 weights with room for the KV cache. The trade-off is more interconnect traffic and more failure points.</p>
+<p>For a full cost comparison of GPU rental against API access, use the <a href="/tools/self-host-vs-api-break-even-calculator.html">self-host vs API break-even calculator</a>. For a per-token view of the same models, see the <a href="/answers/cheapest-way-to-run-llama.html">cheapest way to run Llama</a> page.</p>
+</section>
+
+<section id="faq" class="sec">
+<h2>Related questions</h2>
+<details><summary>Can I run Llama 3 70B on a single consumer GPU?</summary><p>A 24GB consumer GPU cannot hold the FP16 or INT8 weights. It cannot hold the INT4 weights of about 35GB either. A single 48GB workstation card can hold the INT4 weights.</p></details>
+<details><summary>Does quantization change output quality?</summary><p>INT8 usually keeps quality close to FP16. INT4 loses more quality and is best for experiments and low-stakes workloads.</p></details>
+</section>
+
+<footer class="site-footer"><p>KickLLM is an independent pricing resource. Prices can change without notice.</p></footer>
+<nav class="zovo-network" aria-label="Zovo Tools Network">
+  <div class="zovo-network-inner">
+    <h3 class="zovo-network-title">Explore More Tools</h3>
+    <div class="zovo-network-links">
+      <a href="https://mcp.zovo.one">MCP servers for Claude</a>
+      <a href="https://abwex.com">ABWex · A/B Testing</a>
+      <a href="https://claudkit.com">ClaudKit · API Tools</a>
+      <a href="https://gpt0x.com">GPT0X · AI Models</a>
+      <a href="https://viryd.com">Viryd · Dev Tools</a>
+    </div>
+  </div>
+</nav>
+
+</main>
+</body>
+</html>
